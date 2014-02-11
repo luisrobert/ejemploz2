@@ -1,0 +1,34 @@
+<?php
+// module/Application/view/application/album/index.phtml:
+
+$title = 'Mis Tiendas';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+
+<table class="table">
+<tr>
+    <th>Nombre</th>
+    <th>Direccion</th>
+    <th>Telefono</th>
+    <th>Email</th>
+    
+    <th>&nbsp;</th>
+</tr>
+<?php foreach($tiendas as $tienda) : ?>
+<tr>
+    <td><?php echo $this->escapeHtml($tienda->nombre);?></td>
+    <td><?php echo $this->escapeHtml($tienda->direccion);?></td>   
+    <td><?php echo $this->escapeHtml($tienda->telefono);?></td>
+    <td><?php echo $this->escapeHtml($tienda->email);?></td>   
+    
+    <td>
+        <a href="<?php echo $this->url('tienda',
+            array('action'=>'edit', 'id' => $tienda->id));?>">Edit</a>
+        <a href="<?php echo $this->url('tienda',
+            array('action'=>'delete', 'id' => $tienda->id));?>">Delete</a>
+    </td>
+</tr>
+<?php endforeach; ?>
+</table>
